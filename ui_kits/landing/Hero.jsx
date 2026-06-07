@@ -1,22 +1,165 @@
 function Hero() {
   const { Container, Button, Icon, Eyebrow } = window;
+  const { useState, useEffect, useRef } = React;
 
-  const MiniProduct = ({ initial, color, name, cat, price, style }) => (
-    <div style={{
-      background: 'var(--surface-card)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-lg)',
-      boxShadow: 'var(--shadow-lg)', padding: 16, display: 'flex', alignItems: 'center', gap: 13, ...style,
-    }}>
-      <span style={{ width: 46, height: 46, borderRadius: 12, flexShrink: 0, background: `color-mix(in srgb, ${color} 14%, white)`, color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: 19 }}>{initial}</span>
-      <div style={{ flex: 1 }}>
-        <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--text-tertiary)' }}>{cat}</div>
-        <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--text-primary)' }}>{name}</div>
+  /* ── keyframe injection (once) ── */
+  const stylesInjected = useRef(false);
+  useEffect(() => {
+    if (stylesInjected.current) return;
+    stylesInjected.current = true;
+    const css = `
+      /* entrance */
+      @keyframes heroCardEnter {
+        0%   { opacity: 0; transform: translate3d(0, 24px, 0) scale(0.97); filter: blur(3px); }
+        100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+      }
+
+      /* pure vertical float relative to the offset parent */
+      @keyframes heroFloat {
+        0%, 100% { transform: translate3d(0, 0, 0); }
+        50%      { transform: translate3d(0, -8px, 0); }
+      }
+
+      @keyframes heroChipFloat {
+        0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+        50%      { transform: translate3d(0, -5px, 0) rotate(1.5deg); }
+      }
+
+      @keyframes heroPulseRing {
+        0%   { box-shadow: 0 0 0 0 rgba(80,70,229,0.18); }
+        50%  { box-shadow: 0 0 0 8px rgba(80,70,229,0); }
+        100% { box-shadow: 0 0 0 0 rgba(80,70,229,0); }
+      }
+
+      @keyframes heroShimmer {
+        0%   { background-position: -200% center; }
+        100% { background-position: 200% center; }
+      }
+
+      @keyframes heroBgRotate {
+        0%   { transform: rotate(-3deg) scale(1); }
+        50%  { transform: rotate(-1.8deg) scale(1.015); }
+        100% { transform: rotate(-3deg) scale(1); }
+      }
+
+      @keyframes heroGlowPulse {
+        0%, 100% { opacity: 0.45; transform: scale(1); }
+        50%      { opacity: 0.75; transform: scale(1.06); }
+      }
+
+      @keyframes heroBadgeBounce {
+        0%, 100% { transform: scale(1); }
+        50%      { transform: scale(1.06); }
+      }
+
+      /* GPU-accelerated card base */
+      .dps-hero-minicard {
+        will-change: transform;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+      }
+
+      .dps-hero-glow {
+        will-change: opacity, transform;
+        backface-visibility: hidden;
+      }
+      .dps-hero-bg-panel {
+        will-change: transform;
+        backface-visibility: hidden;
+      }
+      .dps-hero-chip {
+        will-change: transform, opacity;
+        backface-visibility: hidden;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .dps-hero-minicard, .dps-hero-chip, .dps-hero-bg-panel, .dps-hero-glow {
+          animation: none !important;
+        }
+      }
+    `;
+    const style = document.createElement('style');
+    style.textContent = css;
+    document.head.appendChild(style);
+  }, []);
+
+  /* ── staggered entrance state ── */
+  const [visible, setVisible] = useState(false);
+  useEffect(() => { const t = setTimeout(() => setVisible(true), 300); return () => clearTimeout(t); }, []);
+
+  const cards = [
+    { initial: 'N', color: '#E50914', cat: 'Streaming', name: 'Netflix Premium', price: 'Rp25.000', offset: '-6px', delay: 0 },
+    { initial: 'C', color: '#7D2AE8', cat: 'Design',    name: 'Canva Pro',       price: 'Rp15.000', offset: '18px',  delay: 1 },
+    { initial: 'G', color: '#10A37F', cat: 'AI Tools',   name: 'ChatGPT Plus',   price: 'Rp75.000', offset: '-2px',  delay: 2 },
+  ];
+
+  const MiniProduct = ({ initial, color, name, cat, price, offset, delay, style: extraStyle }) => {
+    const enterDelay = `${delay * 0.22 + 0.15}s`;
+    const floatDelay = `${delay * 0.8 + 1.2}s`;
+    const floatDur   = `${5.5 + delay * 0.7}s`;
+
+    return (
+      /* Outer Container: Handles static offset, entrance path, and opacity */
+      <div
+        style={{
+          transform: `translate3d(${offset}, 0, 0)`,
+          opacity: 0,
+          animation: visible
+            ? `heroCardEnter 0.9s cubic-bezier(0.16, 1, 0.3, 1) ${enterDelay} forwards`
+            : 'none',
+          willChange: 'transform, opacity',
+          ...extraStyle,
+        }}
+      >
+        {/* Inner Container: Handles pure relative floating without overriding offset */}
+        <div
+          className="dps-hero-minicard"
+          style={{
+            background: 'var(--surface-card)',
+            border: '1px solid var(--border-subtle)',
+            borderRadius: 'var(--radius-lg)',
+            boxShadow: 'var(--shadow-lg)',
+            padding: 16,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 13,
+            animation: visible
+              ? `heroFloat ${floatDur} cubic-bezier(0.45, 0.05, 0.55, 0.95) ${floatDelay} infinite`
+              : 'none',
+          }}
+        >
+          {/* icon circle with subtle pulse */}
+          <span style={{
+            width: 46, height: 46, borderRadius: 12, flexShrink: 0,
+            background: `color-mix(in srgb, ${color} 14%, white)`,
+            color,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontWeight: 800, fontSize: 19,
+            animation: visible ? `heroPulseRing 3.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) ${delay * 1.2 + 1.5}s infinite` : 'none',
+          }}>
+            {initial}
+          </span>
+          <div style={{ flex: 1 }}>
+            <div style={{
+              fontSize: 11, fontWeight: 700, letterSpacing: '0.05em',
+              textTransform: 'uppercase', color: 'var(--text-tertiary)',
+            }}>{cat}</div>
+            <div style={{
+              fontSize: 15, fontWeight: 700, color: 'var(--text-primary)',
+            }}>{name}</div>
+          </div>
+          <div style={{ textAlign: 'right' }}>
+            <div style={{ fontSize: 10, color: 'var(--text-tertiary)' }}>mulai dari</div>
+            <div style={{
+              fontSize: 16, fontWeight: 800,
+              background: 'linear-gradient(90deg, var(--color-primary), #7C3AED)',
+              WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent',
+            }}>{price}</div>
+          </div>
+        </div>
       </div>
-      <div style={{ textAlign: 'right' }}>
-        <div style={{ fontSize: 10, color: 'var(--text-tertiary)' }}>mulai dari</div>
-        <div style={{ fontSize: 16, fontWeight: 800, color: 'var(--color-primary)' }}>{price}</div>
-      </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <section id="home" style={{ position: 'relative', overflow: 'hidden' }}>
@@ -56,16 +199,67 @@ function Hero() {
             </div>
           </div>
 
-          {/* visual */}
+          {/* ───── animated visual ───── */}
           <div className="dps-hero-visual" style={{ position: 'relative', minHeight: 360 }}>
-            <div style={{ position: 'absolute', inset: '8% 4%', background: 'var(--gradient-brand-soft)', borderRadius: 28, transform: 'rotate(-3deg)' }} />
+
+            {/* animated glow orbs behind cards */}
+            <div className="dps-hero-glow" style={{
+              position: 'absolute', top: '15%', left: '10%', width: 180, height: 180,
+              borderRadius: '50%', background: 'radial-gradient(circle, rgba(229,9,20,0.13), transparent 70%)',
+              animation: 'heroGlowPulse 6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite', pointerEvents: 'none',
+            }} />
+            <div className="dps-hero-glow" style={{
+              position: 'absolute', bottom: '10%', right: '5%', width: 200, height: 200,
+              borderRadius: '50%', background: 'radial-gradient(circle, rgba(16,163,127,0.10), transparent 70%)',
+              animation: 'heroGlowPulse 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) 1.5s infinite', pointerEvents: 'none',
+            }} />
+
+            {/* gradient panel with slow breathing */}
+            <div className="dps-hero-bg-panel" style={{
+              position: 'absolute', inset: '8% 4%',
+              background: 'var(--gradient-brand-soft)',
+              borderRadius: 28,
+              animation: 'heroBgRotate 10s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite',
+            }} />
+
+            {/* shimmer overlay */}
+            <div style={{
+              position: 'absolute', inset: '8% 4%', borderRadius: 28, overflow: 'hidden', pointerEvents: 'none',
+            }}>
+              <div style={{
+                position: 'absolute', inset: 0,
+                background: 'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.14) 50%, transparent 60%)',
+                backgroundSize: '200% 100%',
+                animation: 'heroShimmer 5s cubic-bezier(0.45, 0.05, 0.55, 0.95) 2.5s infinite',
+              }} />
+            </div>
+
+            {/* product cards */}
             <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: 16, padding: '24px 8px' }}>
-              <MiniProduct initial="N" color="#E50914" cat="Streaming" name="Netflix Premium" price="Rp25.000" style={{ transform: 'translateX(-6px)' }} />
-              <MiniProduct initial="C" color="#7D2AE8" cat="Design" name="Canva Pro" price="Rp15.000" style={{ transform: 'translateX(18px)', zIndex: 2 }} />
-              <MiniProduct initial="G" color="#10A37F" cat="AI Tools" name="ChatGPT Plus" price="Rp75.000" style={{ transform: 'translateX(-2px)' }} />
+              {cards.map((c, i) => (
+                <MiniProduct key={c.initial} {...c} style={{ zIndex: i === 1 ? 2 : 1 }} />
+              ))}
+
               {/* floating chip */}
-              <div style={{ position: 'absolute', bottom: -10, right: -10, background: 'var(--surface-inverse)', color: '#fff', borderRadius: 14, padding: '10px 14px', boxShadow: 'var(--shadow-xl)', display: 'flex', alignItems: 'center', gap: 9 }}>
-                <span style={{ display: 'inline-flex', background: 'var(--emerald-500)', borderRadius: 8, padding: 5 }}><Icon name="zap" size={14} color="#fff" fill="#fff" /></span>
+              <div className="dps-hero-chip" style={{
+                position: 'absolute', bottom: -10, right: -10,
+                zIndex: 10,
+                background: 'var(--surface-inverse)', color: '#fff',
+                borderRadius: 14, padding: '10px 14px',
+                boxShadow: 'var(--shadow-xl)',
+                display: 'flex', alignItems: 'center', gap: 9,
+                opacity: 0,
+                animation: visible
+                  ? 'heroCardEnter 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.85s forwards, heroChipFloat 5s cubic-bezier(0.45, 0.05, 0.55, 0.95) 2s infinite'
+                  : 'none',
+              }}>
+                <span style={{
+                  display: 'inline-flex',
+                  background: 'var(--emerald-500)', borderRadius: 8, padding: 5,
+                  animation: 'heroBadgeBounce 3s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite',
+                }}>
+                  <Icon name="zap" size={14} color="#fff" fill="#fff" />
+                </span>
                 <div>
                   <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)' }}>Aktivasi</div>
                   <div style={{ fontSize: 13, fontWeight: 700 }}>~ 5 menit</div>

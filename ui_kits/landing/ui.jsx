@@ -58,7 +58,7 @@ function Container({ children, narrow = false, style }) {
 function Eyebrow({ children, style }) {
   return (
     <span style={{
-      fontSize: 'var(--text-xs)', fontWeight: 700, letterSpacing: 'var(--tracking-eyebrow)',
+      fontSize: 'var(--text-sm)', fontWeight: 800, letterSpacing: '0.1em',
       textTransform: 'uppercase', color: 'var(--color-primary)', ...style,
     }}>{children}</span>
   );
@@ -68,10 +68,10 @@ function SectionHead({ eyebrow, title, subtitle, align = 'center' }) {
   return (
     <div style={{
       display: 'flex', flexDirection: 'column', gap: 12, alignItems: align === 'center' ? 'center' : 'flex-start',
-      textAlign: align, maxWidth: align === 'center' ? 640 : 'none', margin: align === 'center' ? '0 auto' : 0,
+      textAlign: align, maxWidth: align === 'center' ? 680 : 'none', margin: align === 'center' ? '0 auto' : 0,
     }}>
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-      <h2 style={{ margin: 0, fontSize: 'clamp(26px, 4vw, var(--text-h2))', fontWeight: 800, letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)', lineHeight: 1.15 }}>{title}</h2>
+      <h2 style={{ margin: 0, fontSize: 'clamp(28px, 4.5vw, var(--text-h2))', fontWeight: 800, letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)', lineHeight: 1.15 }}>{title}</h2>
       {subtitle && <p style={{ margin: 0, fontSize: 'var(--text-lg)', lineHeight: 1.55, color: 'var(--text-secondary)', fontWeight: 500 }}>{subtitle}</p>}
     </div>
   );

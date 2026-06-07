@@ -21,8 +21,8 @@
   --space-32: 128px;
 
   /* Section rhythm */
-  --section-gap: var(--space-16);       /* vertical gap between page sections */
-  --section-gap-tight: var(--space-12);
+  --section-gap: var(--space-24);       /* vertical gap between page sections */
+  --section-gap-tight: var(--space-16);
 
   /* Layout */
   --container-max: 1180px;   /* PRD: 1120–1200px content width */
