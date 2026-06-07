@@ -1,0 +1,92 @@
+<!-- @dsCard group="Components" viewport="700x560" name="Commerce — Product, Category, Trust, Steps, Testimonial" subtitle="Storefront building blocks" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; background: var(--surface-page); font-family: var(--font-sans); }
+  .wrap { padding: 26px; }
+  .lbl { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-tertiary); margin: 0 0 12px; }
+  .block { margin-bottom: 28px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .strip { display: flex; flex-wrap: wrap; gap: 28px; }
+</style>
+</head>
+<body>
+<div id="root" class="wrap"></div>
+<script type="text/babel">
+  const { ProductCard, CategoryCard, TrustBadge, StepItem, TestimonialCard } = window.DigitalPremiumShopDesignSystem_f48416;
+  function Demo() {
+    return (
+      <div>
+        <div className="block">
+          <p className="lbl">Trust badges</p>
+          <div className="strip">
+            <TrustBadge icon="zap" label="Proses cepat" tint="var(--indigo-600)" />
+            <TrustBadge icon="headphones" label="Support responsif" tint="var(--indigo-600)" />
+            <TrustBadge icon="shield-check" label="Garansi produk" tint="var(--emerald-600)" />
+            <TrustBadge icon="wallet" label="Harga hemat" tint="var(--amber-600)" />
+          </div>
+        </div>
+
+        <div className="block">
+          <p className="lbl">Category cards</p>
+          <div className="grid4">
+            <CategoryCard label="Streaming" icon="play" count={12} tint="#5046E5" />
+            <CategoryCard label="AI Tools" icon="sparkles" count={8} tint="#10B981" />
+            <CategoryCard label="Productivity" icon="briefcase" count={9} tint="#F59E0B" />
+            <CategoryCard label="Cloud Storage" icon="cloud" count={5} tint="#0EA5E9" />
+          </div>
+        </div>
+
+        <div className="block">
+          <p className="lbl">Product cards</p>
+          <div className="grid3">
+            <ProductCard name="Netflix Premium" category="Streaming" price="Rp25.000" duration="1 Bulan"
+              brandColor="#E50914" brandInitial="N" badge={{ tone: 'bestseller', label: 'Best Seller' }}
+              benefits={['4K Ultra HD', 'Garansi penuh', 'Aktivasi cepat']} />
+            <ProductCard name="Spotify Premium" category="Streaming" price="Rp18.000" oldPrice="Rp54.000" duration="1 Bulan"
+              brandColor="#1DB954" brandInitial="S" badge={{ tone: 'popular', label: 'Popular' }}
+              benefits={['Tanpa iklan', 'Offline mode', 'Garansi penuh']} />
+            <ProductCard name="ChatGPT Plus" category="AI Tools" price="Rp75.000" duration="1 Bulan"
+              brandColor="#10A37F" brandInitial="C" badge={{ tone: 'new', label: 'New' }}
+              benefits={['GPT-4o akses', 'Prioritas server', 'Garansi penuh']} />
+          </div>
+        </div>
+
+        <div className="block">
+          <p className="lbl">Stepper — Cara Order</p>
+          <div className="grid4">
+            <StepItem number={1} title="Pilih produk" description="Pilih akun premium yang kamu mau." />
+            <StepItem number={2} title="Chat admin" description="Klik order atau chat via WhatsApp." />
+            <StepItem number={3} title="Bayar" description="Lakukan pembayaran yang mudah." />
+            <StepItem number={4} title="Akun dikirim" description="Akun siap dipakai." last />
+          </div>
+        </div>
+
+        <div className="block" style={{ marginBottom: 0 }}>
+          <p className="lbl">Testimonials</p>
+          <div className="grid2">
+            <TestimonialCard name="Rizky A." product="Netflix Premium" rating={5}
+              comment="Prosesnya cepat banget, akun langsung aktif. Recommended!" avatarColor="#5046E5" />
+            <TestimonialCard name="Putri M." product="Canva Pro" rating={5}
+              comment="Harga jauh lebih hemat dan adminnya ramah. Mantap!" avatarColor="#10B981" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+  (function poll(n){ if (window.lucide) { window.lucide.createIcons(); }
+    else if (n < 50) setTimeout(() => poll(n + 1), 100); })(0);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</body>
+</html>

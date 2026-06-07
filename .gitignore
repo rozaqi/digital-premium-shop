@@ -1,0 +1,8 @@
+# Skip SKILL.md as requested
+SKILL.md
+
+# Ignore thumbnails or temporary files
+.thumbnail
+.DS_Store
+Thumbs.db
+node_modules/

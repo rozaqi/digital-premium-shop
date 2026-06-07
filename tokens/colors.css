@@ -1,0 +1,111 @@
+/* ============================================================
+   Digital Premium Shop — Color System
+   Brand: clean, modern, premium-but-friendly digital storefront.
+   Indigo primary (trust + tech), Emerald accent (garansi/trust),
+   Amber for "Best Seller" highlights. Slate neutrals on off-white.
+   ============================================================ */
+
+:root {
+  /* ---- Brand: Indigo (primary) ---- */
+  --indigo-50:  #EEF0FF;
+  --indigo-100: #E0E3FF;
+  --indigo-200: #C7CCFE;
+  --indigo-300: #A5ABFB;
+  --indigo-400: #8187F6;
+  --indigo-500: #6366F1;
+  --indigo-600: #5046E5;  /* primary */
+  --indigo-700: #4338CA;
+  --indigo-800: #372FA3;
+  --indigo-900: #2C2A7A;
+
+  /* ---- Accent: Emerald (trust / garansi / success) ---- */
+  --emerald-50:  #ECFDF5;
+  --emerald-100: #D1FAE5;
+  --emerald-300: #6EE7B7;
+  --emerald-500: #10B981;
+  --emerald-600: #059669;
+  --emerald-700: #047857;
+
+  /* ---- Highlight: Amber (best seller / rating stars) ---- */
+  --amber-50:  #FFFBEB;
+  --amber-100: #FEF3C7;
+  --amber-400: #FBBF24;
+  --amber-500: #F59E0B;
+  --amber-600: #D97706;
+
+  /* ---- Support: Rose (sale / error) ---- */
+  --rose-50:  #FFF1F2;
+  --rose-100: #FFE4E6;
+  --rose-500: #F43F5E;
+  --rose-600: #E11D48;
+
+  /* ---- Neutrals: Slate ---- */
+  --slate-0:   #FFFFFF;
+  --slate-50:  #F8FAFC;
+  --slate-100: #F1F5F9;
+  --slate-150: #ECEFF4;
+  --slate-200: #E2E8F0;
+  --slate-300: #CBD5E1;
+  --slate-400: #94A3B8;
+  --slate-500: #64748B;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1E293B;
+  --slate-900: #0F172A;
+
+  /* ============================================================
+     Semantic aliases — use these in components, not raw scales.
+     ============================================================ */
+
+  /* Brand */
+  --color-primary:        var(--indigo-600);
+  --color-primary-hover:  var(--indigo-700);
+  --color-primary-soft:   var(--indigo-50);
+  --color-primary-ring:   color-mix(in srgb, var(--indigo-600) 28%, transparent);
+  --color-on-primary:     #FFFFFF;
+
+  --color-accent:         var(--emerald-500);
+  --color-accent-strong:  var(--emerald-600);
+  --color-accent-soft:    var(--emerald-50);
+
+  /* Surfaces */
+  --surface-page:    #FBFBFD;          /* off-white app background */
+  --surface-card:    var(--slate-0);   /* white cards */
+  --surface-sunken:  var(--slate-50);  /* subtle inset panels */
+  --surface-inverse: var(--slate-900); /* dark footer / contrast blocks */
+
+  /* Text */
+  --text-primary:    var(--slate-900);
+  --text-secondary:  var(--slate-500);
+  --text-tertiary:   var(--slate-400);
+  --text-on-inverse: #FFFFFF;
+  --text-on-inverse-muted: color-mix(in srgb, #FFFFFF 64%, transparent);
+  --text-link:       var(--indigo-600);
+
+  /* Borders & dividers */
+  --border-subtle:   var(--slate-200);
+  --border-hairline: var(--slate-150);
+  --border-strong:   var(--slate-300);
+  --border-focus:    var(--indigo-600);
+
+  /* Status */
+  --status-success:  var(--emerald-600);
+  --status-success-soft: var(--emerald-50);
+  --status-warning:  var(--amber-500);
+  --status-warning-soft: var(--amber-50);
+  --status-danger:   var(--rose-600);
+  --status-danger-soft:  var(--rose-50);
+
+  /* Badge tones (product cards) */
+  --badge-bestseller-bg: var(--amber-100);
+  --badge-bestseller-fg: var(--amber-600);
+  --badge-popular-bg:    var(--indigo-100);
+  --badge-popular-fg:    var(--indigo-700);
+  --badge-new-bg:        var(--emerald-100);
+  --badge-new-fg:        var(--emerald-700);
+
+  /* Brand gradient — for hero accents & primary CTA highlights */
+  --gradient-brand: linear-gradient(135deg, var(--indigo-600) 0%, #7C5CFB 100%);
+  --gradient-brand-soft: linear-gradient(135deg, var(--indigo-50) 0%, #F3EEFF 100%);
+  --gradient-mint:  linear-gradient(135deg, var(--emerald-500) 0%, #34D399 100%);
+}

@@ -1,0 +1,35 @@
+<!-- @dsCard group="Brand" viewport="700x200" name="Logo" subtitle="Lockup, mark, inverse on dark" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; font-family: var(--font-sans); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .cell { padding: 28px 26px; display: flex; align-items: center; gap: 18px; }
+  .light { background: var(--surface-card); }
+  .dark { background: var(--surface-inverse); }
+  .cap { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-tertiary); }
+  .cap-d { color: rgba(255,255,255,0.5); }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="cell light" style="border-bottom:1px solid var(--border-subtle); border-right:1px solid var(--border-subtle)">
+      <img src="../assets/logo.svg" height="40" alt="logo" />
+    </div>
+    <div class="cell dark" style="border-bottom:1px solid var(--surface-inverse)">
+      <img src="../assets/logo-white.svg" height="40" alt="logo inverse" />
+    </div>
+    <div class="cell light" style="border-right:1px solid var(--border-subtle)">
+      <img src="../assets/mark.svg" height="52" alt="mark" />
+      <span class="cap">App mark / favicon</span>
+    </div>
+    <div class="cell light">
+      <img src="../assets/logo.svg" height="26" alt="logo small" />
+      <span class="cap">Min size · 26px tall</span>
+    </div>
+  </div>
+</body>
+</html>

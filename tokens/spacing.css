@@ -1,0 +1,41 @@
+/* ============================================================
+   Digital Premium Shop — Spacing & Layout
+   4px base grid. Generous whitespace per design direction.
+   ============================================================ */
+
+:root {
+  /* Spacing scale (4px base) */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* Section rhythm */
+  --section-gap: var(--space-24);       /* vertical gap between page sections */
+  --section-gap-tight: var(--space-16);
+
+  /* Layout */
+  --container-max: 1180px;   /* PRD: 1120–1200px content width */
+  --container-narrow: 760px; /* prose / FAQ width */
+  --gutter: var(--space-6);  /* page side padding (desktop) */
+  --gutter-mobile: var(--space-5);
+
+  /* Radii — soft, rounded, friendly */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;   /* buttons, inputs */
+  --radius-lg: 18px;   /* cards */
+  --radius-xl: 24px;   /* feature panels */
+  --radius-2xl: 32px;
+  --radius-pill: 999px;
+}

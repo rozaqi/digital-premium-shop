@@ -1,0 +1,12 @@
+/* ============================================================
+   Digital Premium Shop — Webfonts
+   Plus Jakarta Sans (display + UI + body) — chosen for its modern,
+   friendly geometric character and excellent Latin coverage for
+   Indonesian copy. JetBrains Mono for prices/codes/technical bits.
+
+   NOTE: Loaded from Google Fonts CDN. To fully self-host, drop the
+   .woff2 files into assets/fonts/ and swap the @import for @font-face
+   rules pointing at them. (Flagged to user.)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');

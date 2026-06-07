@@ -1,0 +1,52 @@
+/* ============================================================
+   Digital Premium Shop — Typography
+   Family: Plus Jakarta Sans. Headings bold (700/800) with tight
+   tracking; body 400/500 in slate. One display family only.
+   ============================================================ */
+
+:root {
+  /* Families */
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system,
+               'Segoe UI', Roboto, sans-serif;
+  --font-display: var(--font-sans);
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Type scale (px) — modular, tuned for a marketing landing page */
+  --text-display: 56px;   /* hero headline (desktop) */
+  --text-h1: 44px;
+  --text-h2: 34px;        /* section titles */
+  --text-h3: 24px;
+  --text-h4: 20px;
+  --text-lg: 18px;        /* lead paragraph */
+  --text-base: 16px;      /* body */
+  --text-sm: 14px;        /* secondary / captions */
+  --text-xs: 12px;        /* labels / eyebrows */
+
+  /* Weights */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+
+  /* Line heights */
+  --leading-tight: 1.1;    /* display */
+  --leading-snug: 1.25;    /* headings */
+  --leading-normal: 1.5;   /* body */
+  --leading-relaxed: 1.65; /* long paragraphs */
+
+  /* Letter spacing */
+  --tracking-tighter: -0.03em;  /* large display */
+  --tracking-tight: -0.015em;   /* headings */
+  --tracking-normal: 0;
+  --tracking-wide: 0.02em;
+  --tracking-eyebrow: 0.08em;    /* uppercase eyebrows */
+}
+
+/* Base document defaults */
+html {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}

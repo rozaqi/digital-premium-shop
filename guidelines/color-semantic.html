@@ -1,0 +1,28 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Semantic & Status" subtitle="Surfaces, text, borders, status tones" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: var(--surface-page); font-family: var(--font-sans); padding: 22px 24px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .tok { background: var(--surface-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 10px; display: flex; align-items: center; gap: 10px; }
+  .dot { width: 30px; height: 30px; border-radius: 8px; border: 1px solid rgba(15,23,42,0.08); flex-shrink: 0; }
+  .k { font-size: 11.5px; font-weight: 700; color: var(--text-primary); }
+  .v { font-size: 10.5px; color: var(--text-tertiary); font-family: var(--font-mono); }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="tok"><span class="dot" style="background:var(--text-primary)"></span><div><div class="k">text-primary</div><div class="v">slate 900</div></div></div>
+    <div class="tok"><span class="dot" style="background:var(--text-secondary)"></span><div><div class="k">text-secondary</div><div class="v">slate 500</div></div></div>
+    <div class="tok"><span class="dot" style="background:var(--surface-page); border-color: var(--border-subtle)"></span><div><div class="k">surface-page</div><div class="v">#FBFBFD</div></div></div>
+    <div class="tok"><span class="dot" style="background:var(--border-subtle)"></span><div><div class="k">border-subtle</div><div class="v">slate 200</div></div></div>
+    <div class="tok"><span class="dot" style="background:var(--status-success)"></span><div><div class="k">success</div><div class="v">emerald 600</div></div></div>
+    <div class="tok"><span class="dot" style="background:var(--status-warning)"></span><div><div class="k">warning</div><div class="v">amber 500</div></div></div>
+    <div class="tok"><span class="dot" style="background:var(--status-danger)"></span><div><div class="k">danger</div><div class="v">rose 600</div></div></div>
+    <div class="tok"><span class="dot" style="background:var(--surface-inverse)"></span><div><div class="k">inverse</div><div class="v">slate 900</div></div></div>
+  </div>
+</body>
+</html>

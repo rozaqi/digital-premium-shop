@@ -1,0 +1,32 @@
+<!-- @dsCard group="Components" viewport="760x440" name="FAQ Accordion" subtitle="Expandable Q&A, single-open" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; background: var(--surface-page); font-family: var(--font-sans); }
+  .wrap { padding: 26px; max-width: 700px; }
+</style>
+</head>
+<body>
+<div id="root" class="wrap"></div>
+<script type="text/babel">
+  const { FaqAccordion } = window.DigitalPremiumShopDesignSystem_f48416;
+  const items = [
+    { question: 'Apakah akun bergaransi?', answer: 'Ya. Semua akun bergaransi sesuai ketentuan masing-masing produk. Jika ada kendala dalam masa garansi, kami bantu ganti atau perbaiki.' },
+    { question: 'Berapa lama proses aktivasi?', answer: 'Rata-rata 5–15 menit setelah pembayaran dikonfirmasi. Untuk beberapa produk bisa langsung instan.' },
+    { question: 'Apakah bisa request produk lain?', answer: 'Bisa. Chat admin via WhatsApp dan sebutkan produk yang kamu butuhkan — kami cek ketersediaannya.' },
+    { question: 'Metode pembayaran apa saja yang tersedia?', answer: 'Transfer bank, e-wallet (DANA, OVO, GoPay), dan QRIS.' },
+  ];
+  ReactDOM.createRoot(document.getElementById('root')).render(<FaqAccordion items={items} />);
+  (function poll(n){ if (window.lucide) { window.lucide.createIcons(); }
+    else if (n < 50) setTimeout(() => poll(n + 1), 100); })(0);
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</body>
+</html>
