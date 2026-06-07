@@ -1,63 +1,63 @@
 # Digital Premium Shop — Landing Page & Design System
 
-Sebuah storefront/landing page modern dan bersih untuk **Digital Premium Shop**, platform penjualan akun premium (seperti streaming, AI tools, produktivitas, cloud storage, platform belajar, dan design tools) yang menargetkan pasar Indonesia.
+A clean and modern storefront landing page for **Digital Premium Shop**, a premium account reseller platform (selling streaming subscriptions, AI tools, productivity suites, cloud storage, e-learning licenses, and design utilities) targeting the Indonesian market.
 
-Desain ini dibuat agar terlihat profesional, terpercaya, dan ramah pengguna (*user-friendly*), sehingga calon pembeli dapat dengan mudah memahami produk yang ditawarkan dalam waktu singkat dan melakukan pemesanan via WhatsApp.
-
----
-
-## 🛠️ Teknologi yang Digunakan
-
-Proyek ini dibangun menggunakan teknologi web modern tanpa memerlukan proses build yang rumit:
-- **HTML5 & CSS3**: Menggunakan CSS kustom (Vanilla CSS) untuk sistem desain yang fleksibel (warna, tipografi, grid spacing, efek bayangan, dan animasi).
-- **React (v18)**: Digunakan untuk struktur komponen halaman yang dinamis dan modular.
-- **Babel Standalone**: Berperan untuk melakukan *transpile* JSX secara langsung di browser tanpa perlu setup bundler (seperti Webpack atau Vite).
-- **Lucide Icons**: Digunakan sebagai set ikon berbasis garis yang minimalis dan responsif.
-- **Plus Jakarta Sans**: Font utama yang memberikan kesan modern dan premium.
+This layout and design system are designed to look professional, trustworthy, and user-friendly, allowing visitors to quickly understand the catalog and place orders via WhatsApp within 5 seconds.
 
 ---
 
-## 🚀 Cara Menjalankan secara Lokal
+## 🛠️ Tech Stack
 
-Karena proyek ini menggunakan Babel untuk me-render file JSX secara langsung di browser, Anda memerlukan server lokal (HTTP server) untuk menghindari kendala keamanan browser (CORS).
+This project is built using a modern frontend stack that runs entirely in the browser without requiring a complex compilation or build step:
+- **HTML5 & CSS3**: Vanilla CSS for the core design system tokens (colors, typography, grid spacing, shadows, and subtle micro-animations).
+- **React (v18)**: Modulized layout structure built into clean components.
+- **Babel Standalone**: Compiles JSX directly in the browser, eliminating the need for bundlers like Webpack or Vite for lightweight local previews.
+- **Lucide Icons**: Stroked, minimal line-art icons.
+- **Plus Jakarta Sans**: A clean, contemporary font family used for display headings and body copy.
 
-Ikuti langkah-langkah berikut:
+---
 
-### 1. Buka Terminal / Command Prompt
-Buka terminal dan masuk ke folder proyek ini:
+## 🚀 How to Run Locally
+
+Because the project loads JSX scripts directly inside the browser using Babel, you will need a local HTTP server to prevent CORS security blocks.
+
+Follow these simple steps:
+
+### 1. Open Terminal / Command Prompt
+Open your terminal and navigate to the project directory:
 ```bash
 cd "Digital Premium Shop Design System"
 ```
 
-### 2. Jalankan HTTP Server
-Jalankan salah satu server lokal instan di bawah ini (pilih salah satu yang sesuai dengan lingkungan Anda):
+### 2. Start a Local HTTP Server
+Run any of the following commands to start an instant local server (pick one that matches your environment):
 
-* **Menggunakan Node.js (Paling Direkomendasikan)**:
+* **Using Node.js (Highly Recommended)**:
   ```bash
   npx http-server --port 3000
-  # atau
+  # or
   npx serve -l 3000
   ```
 
-* **Menggunakan Python**:
+* **Using Python**:
   ```bash
   python -m http.server 3000
   ```
 
-* **Menggunakan PHP**:
+* **Using PHP**:
   ```bash
   php -S localhost:3000
   ```
 
-### 3. Akses Halaman Utama
-Setelah server berjalan, buka browser Anda dan akses alamat berikut:
+### 3. Open the Page
+Once the server is running, open your web browser and go to:
 👉 **[http://localhost:3000/ui_kits/landing/index.html](http://localhost:3000/ui_kits/landing/index.html)**
 
 ---
 
-## 📁 Struktur Folder Utama
-- `ui_kits/landing/` — Halaman landing page lengkap (HTML, data, dan komponen JSX).
-- `tokens/` — Token desain untuk warna, tipografi, layout spacing, dll.
-- `components/` — File komponen UI dasar sistem desain.
-- `assets/` — Aset gambar dan logo SVG.
-- `styles.css` — Entry point utama untuk seluruh CSS.
+## 📁 Directory Structure
+- `ui_kits/landing/` — Full interactive landing page implementation (HTML, mock data, and JSX sections).
+- `tokens/` — Core design system tokens (colors, typography, layout spacings, and motion).
+- `components/` — Individual design system components.
+- `assets/` — SVG logos and project branding assets.
+- `styles.css` — Global CSS stylesheet.
