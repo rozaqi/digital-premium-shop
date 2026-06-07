@@ -31,6 +31,15 @@ window.SHOP_DATA = {
     { name: 'Google One', category: 'Cloud Storage', price: 'Rp22.000', duration: '1 Bulan',
       brandColor: '#1A73E8', brandInitial: 'G', badge: null,
       benefits: ['100 GB storage', 'Backup otomatis', 'Garansi penuh'] },
+    { name: 'Claude Pro', category: 'AI Tools', price: 'Rp50.000', oldPrice: 'Rp99.000', duration: '1 Bulan',
+      brandColor: '#D97706', brandInitial: 'C', badge: { tone: 'popular', label: 'Popular' },
+      benefits: ['Claude 3.5 Sonnet', '200k token limit', 'Garansi penuh'] },
+    { name: 'Gemini Advanced', category: 'AI Tools', price: 'Rp60.000', oldPrice: 'Rp120.000', duration: '1 Bulan',
+      brandColor: '#9B72F3', brandInitial: 'G', badge: { tone: 'new', label: 'New' },
+      benefits: ['Gemini 1.5 Pro', '2 TB Google One', 'Aktivasi cepat'] },
+    { name: 'Apple Music', category: 'Streaming', price: 'Rp15.000', oldPrice: 'Rp49.000', duration: '1 Bulan',
+      brandColor: '#FC3C44', brandInitial: 'A', badge: null,
+      benefits: ['Lossless audio', 'Tanpa iklan', 'Garansi penuh'] },
   ],
 
   benefits: [
